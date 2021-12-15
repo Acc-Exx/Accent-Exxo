@@ -38,7 +38,6 @@ public class EmployeeManagerImplTest {
         assertEquals(employeeService.search("Gayathri Jayaraman"),null);
 
     }
-
     public void globalSerachTest2(){
 
         Employee e1=new Employee();
@@ -49,7 +48,6 @@ public class EmployeeManagerImplTest {
         assertEquals(employeeService.search("Gayathri").size(),1);
 
     }
-
     @Test
     public void InsertOrUpdateEmployeeTest()
     {
