@@ -31,5 +31,5 @@ public class Employee {
     private String addressLine1;
     private String city;
     private String state;
-    private String createDate;
+    private LocalDateTime createDate;
 }

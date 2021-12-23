@@ -32,7 +32,7 @@ public class EmployeeController {
         }
 
         @PostMapping (value="/saveemployee")
-        public ResponseEntity<Employee> saveEmployeeDetails(@Valid  @RequestBody Employee employee){
+        public ResponseEntity<Employee> saveEmployeeDetails(@Valid @RequestBody Employee employee){
                 logger.info("EmployeeController - inside saveEmployeeDetails method");
                 Employee emp = employeeService.saveEmployeeDetails(employee);
                 return new ResponseEntity<>(Objects.nonNull(emp) ? emp : null,

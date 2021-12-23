@@ -28,6 +28,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compile 'joda-time:joda-time:2.10.13'
+	compile 'org.apache.commons:commons-configuration2:2.7'
 }
 
 test {
