@@ -48,21 +48,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> list = null;
 
         if(Objects.isNull(employee)){
-            list =  employeeRepository.findAll();
+            list = employeeRepository.findAll();
         }
         else if(!StringUtils.isEmpty(employee.getName())){
-            list =  employeeRepository.findByNameContaining(employee.getName());
+            list = employeeRepository.findByNameContaining(employee.getName());
         }
-        else if(StringUtils.isEmpty(employee.getEmail())){
-            list =  employeeRepository.findByEmailContaining(employee.getEmail());
+        else if(!StringUtils.isEmpty(employee.getEmail())){
+            list = employeeRepository.findByEmailContaining(employee.getEmail());
         }
 
         DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        list =  list.stream().map(
-                list1->{
-                    list1.setCreateDate(LocalDateTime.parse(list1.getCreateDate().format(dateformat)));
-                    return list1;
-                }).collect(Collectors.toList());
+        list =  Objects.nonNull(list) ? list.stream().map(
+                    list1->{
+                        list1.setCreateDate(LocalDateTime.parse(list1.getCreateDate().format(dateformat)));
+                        return list1;
+                    }).collect(Collectors.toList())
+                :null;
 
         return list;
     }

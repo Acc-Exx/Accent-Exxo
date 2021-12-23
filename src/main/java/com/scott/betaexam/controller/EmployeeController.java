@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class EmployeeController {
         public ResponseEntity<List<Employee>> getEmployeeDetails(@RequestBody(required = false) Employee employee) {
                 logger.info("EmployeeController - inside getEmployeeDetails method");
                 List<Employee> emp = employeeService.getEmployeeDetails(employee);
-                return new ResponseEntity<>(emp, HttpStatus.OK);
+                return new ResponseEntity<>(Objects.nonNull(emp) ? emp : new ArrayList<>(), HttpStatus.OK);
         }
 
         @PostMapping (value="/saveemployee")
