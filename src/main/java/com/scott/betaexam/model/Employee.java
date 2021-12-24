@@ -1,7 +1,10 @@
 package com.scott.betaexam.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -9,16 +12,19 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
+@Data
 @Table(name = "EMPLOYEE")
-@Getter @Setter
+@Getter @Setter @ToString @AllArgsConstructor
 public class Employee {
 
     @Id
     @GeneratedValue
     private UUID id;
 
+    @NotBlank(message = "Name shouldn't be blank")
     private String name;
 
+    @Email(message = "Please provide valid email address")
     private String email;
 
     private String address;
@@ -31,31 +37,11 @@ public class Employee {
 
     @PrePersist
     public void onCreate() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
         this.createDate = simpleDateFormat.format(new Date());
     }
 
     public Employee() {
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", createDate='" + createDate + '\'' +
-                '}';
-    }
-
-    public Employee(String name, String email, String address, String city, String state) {
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-    }
 }

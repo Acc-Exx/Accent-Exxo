@@ -3,7 +3,6 @@ package com.scott.betaexam.controller;
 import com.scott.betaexam.Exception.EmployeeNotFoundException;
 import com.scott.betaexam.model.Employee;
 import com.scott.betaexam.service.EmployeeService;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,9 +22,10 @@ public class EmployeeController {
                                           @RequestParam(value = "email", required = false) String email) {
         try {
              List<Employee> employeeList = employeeService.getEmployee(name, email);
+            /* Below code will handle the exception for employee not found:
              if (employeeList.size() == 0){
                  throw new EmployeeNotFoundException();
-             }
+             }*/
              return employeeList;
         } catch (EmployeeNotFoundException e) {
             throw new EmployeeNotFoundException();
