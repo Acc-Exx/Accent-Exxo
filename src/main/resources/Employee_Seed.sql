@@ -1,1 +1,1 @@
-
+create table employee (Id int, name varchar(20), email varchar(40), address varchar(30), city varchar(20), state varchar(20), create_date timestamp;

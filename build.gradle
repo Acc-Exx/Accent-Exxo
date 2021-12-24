@@ -15,10 +15,17 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.projectlombok:lombok'
+    implementation 'junit:junit'
+    annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	runtimeOnly 'org.apache.derby:derby'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.27'
+	testCompile 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+
 }
 
 test {
-	useJUnitPlatform()
+	//useJUnitPlatform()
 }
