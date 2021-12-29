@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
@@ -32,10 +33,7 @@ public class BetaExamServiceImpl implements BetaExamService{
         StringBuilder message = new StringBuilder();
         try {
             Employee employee = new Employee();
-            if(em.getId()!=null && !em.getId().isEmpty()||!em.getId().equals(""))
-             employee.setId(em.getId());
-            else
-                message.append("Employee ID must not Empty");
+            employee.setId( UUID.randomUUID().toString());
             if(em.getName()!=null && !em.getName().isEmpty()||!em.getName().equals(""))
               employee.setName(em.getName());
             else
