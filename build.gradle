@@ -15,8 +15,12 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	runtimeOnly 'org.apache.derby:derby'
+	//runtimeOnly 'org.apache.derby:derby'
+	compileOnly  'org.projectlombok:lombok:0.11.0'
+	compile group: 'com.h2database', name: 'h2', version: '1.4.193'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
 }
 
 test {
