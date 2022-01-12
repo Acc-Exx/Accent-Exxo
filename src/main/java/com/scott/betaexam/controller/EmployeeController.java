@@ -35,7 +35,7 @@ public class EmployeeController {
 
     }
 
-    @PostMapping(path = "/save_employee", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/save_employee",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
         if (null == employee)
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
