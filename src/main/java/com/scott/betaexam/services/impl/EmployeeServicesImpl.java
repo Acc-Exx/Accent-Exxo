@@ -25,9 +25,6 @@ public class EmployeeServicesImpl implements IEmployeeServices {
     @Autowired
     IEmployeeRepository iEmployeeRepository;
 
-    public void setiEmployeeRepository(IEmployeeRepository iEmployeeRepository) {
-        this.iEmployeeRepository = iEmployeeRepository;
-    }
 
     @Override
     public List<Employee> findEmployeeByNameOrEmail(String filterByAny) {

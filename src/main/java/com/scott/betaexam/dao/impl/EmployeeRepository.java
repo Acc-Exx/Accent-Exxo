@@ -21,14 +21,7 @@ import java.util.UUID;
 public class EmployeeRepository implements IEmployeeRepository {
 
     @Autowired
-    private DataSource dataSource;
-
-    @Autowired
     JdbcTemplate jdbcTemplate;
-
-    public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
 
     @Override
     public List<Employee> findEmployeeByNameOrEmail(String filterByAny,String filterWith) {
