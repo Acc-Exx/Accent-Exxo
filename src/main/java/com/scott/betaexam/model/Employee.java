@@ -14,7 +14,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
+@Table(name = "EMPLOYEE")
 public class Employee {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -22,12 +22,18 @@ public class Employee {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @ColumnDefault("random_uuid()")
+    @Column(name = "Employee_Id")
     private UUID employeeId;
+    @Column(name = "Name")
     private String name;
+    @Column(name = "Email")
     private String email;
+    @Column(name = "Address_line_1")
     private String addressLine1;
+    @Column(name = "City")
     private String city;
+    @Column(name = "State")
     private String state;
+    @Column(name = "Create_Date")
     private Timestamp createDate;
 }

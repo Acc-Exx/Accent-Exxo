@@ -1,8 +1,7 @@
 package com.scott.betaexam.controller;
 
-import com.google.gson.Gson;
 import com.scott.betaexam.model.Employee;
-import com.scott.betaexam.model.EmployeeDTO;
+import com.scott.betaexam.dto.EmployeeDTO;
 import com.scott.betaexam.service.EmployeeService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -36,7 +35,7 @@ public class EmployeeControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    @Test
+/*    @Test
     public void testfindByName() throws Exception {
         UUID uuid = UUID.randomUUID();
         UUID uuid1 = UUID.randomUUID();
@@ -50,18 +49,18 @@ public class EmployeeControllerTest {
         when(employeeService.findByName("sanyu")).thenReturn(list);
         this.mockMvc.perform(get("/employee/findByName/sanyu")).andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name", Matchers.is("Sanyu")));
-    }
+    }*/
 
     @Test
-    public void testfindByEmail() throws Exception {
+    public void testfindEmployeeByNameOrEmailId() throws Exception {
         Employee employee = Employee.builder().employeeId(UUID.randomUUID()).name("Sanyu").email("sanyu@gmail.com").addressLine1("kurla,Mumbai").city("Mumbai").state("Maharashtra").createDate(new Timestamp(System.currentTimeMillis())).build();
         Employee employee1 = Employee.builder().employeeId(UUID.randomUUID()).name("Sanyu").email("sanyu@gmail.com").addressLine1("kurla,Mumbai").city("Mumbai").state("Maharashtra").createDate(new Timestamp(System.currentTimeMillis())).build();
         List<Employee> list = new ArrayList<>();
         list.add(employee);
         list.add(employee1);
         //  given(service.findByName("Sanyu")).willReturn(list);
-        when(employeeService.findByEmail("sanyu@gmail.com")).thenReturn(list);
-        this.mockMvc.perform(get("/employee/findByEmail/sanyu@gmail.com")).andExpect(status().isOk())
+        when(employeeService.getEmployeeByNameOrEmailId("sanyu","sanyu@gmail.com")).thenReturn(list);
+        this.mockMvc.perform(get("/employee/findByNameOrEmail/sanyu/sanyu@gmail.com")).andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].email", Matchers.is("sanyu@gmail.com")));
     }
 

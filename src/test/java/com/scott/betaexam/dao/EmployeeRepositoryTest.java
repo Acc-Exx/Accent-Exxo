@@ -38,15 +38,15 @@ public class EmployeeRepositoryTest {
         repo.save(employee);
         Employee employee1 = Employee.builder().name("Sanyu").email("sanyu@gmail.com").addressLine1("kurla,Mumbai").city("Mumbai").state("Maharashtra").createDate(new Timestamp(System.currentTimeMillis())).build();
         repo.save(employee1);
-        List<Employee> employeeList = repo.findByName("Sanyu");
+        List<Employee> employeeList = repo.getEmployeeByNameOrEmail("Sanyu","sanyu@gmail.com");
         assertEquals(2, employeeList.size());
     }
 
-    @Test
+    /*@Test
     public void findByEmailTest() {
         Employee employee = Employee.builder().name("Sanyu").email("sanyu@gmail.com").addressLine1("kurla,Mumbai").city("Mumbai").state("Maharashtra").createDate(new Timestamp(System.currentTimeMillis())).build();
         repo.save(employee);
          List<Employee> employeeList = repo.findByEmail("sanyu@gmail.com");
         assertEquals(1, employeeList.size());
-    }
+    }*/
 }
