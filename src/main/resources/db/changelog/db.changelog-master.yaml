@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: migrations/V2022_11_02_05_00__create-employee-table.yaml
+
+      relativeToChangelogFile: true
