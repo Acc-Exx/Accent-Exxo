@@ -22,12 +22,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 "Found ", request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers , HttpStatus status) {
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+
         FieldError error = ex.getFieldError();
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put(error.getField(), error.getDefaultMessage());
         ErrorResponse response = new ErrorResponse(LocalDateTime.now(), "Validation Feild", errorMap.toString());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
-
 }
